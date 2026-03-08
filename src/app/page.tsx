@@ -5,7 +5,7 @@ import Image from "next/image";
 import { FormData, initialFormData } from "@/lib/types";
 import { submitForm } from "@/lib/submitForm";
 import { useTranslation } from "@/i18n/useTranslation";
-import LanguageToggle from "@/components/LanguageToggle";
+
 import FormSection from "@/components/FormSection";
 import QuestionRadio from "@/components/QuestionRadio";
 import QuestionCheckbox from "@/components/QuestionCheckbox";
@@ -107,12 +107,7 @@ export default function Home() {
   }
 
   return (
-    <div className="relative min-h-screen bg-cream-50 px-4 py-8 sm:py-12">
-      {/* Language toggle — top right */}
-      <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
-        <LanguageToggle />
-      </div>
-
+    <div className="min-h-screen bg-cream-50 px-4 py-8 sm:py-12">
       <div className="mx-auto max-w-2xl">
         {/* Header */}
         <div className="mb-8 rounded-xl bg-navy-700 p-6 text-center shadow-sm">
