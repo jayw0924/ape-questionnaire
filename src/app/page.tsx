@@ -26,6 +26,13 @@ export default function Home() {
     e.preventDefault();
     setError("");
 
+    // Validate respondent info
+    if (!form.respondentName.trim() || !form.respondentPhone.trim() || !form.respondentChildAge.trim()) {
+      setError(t("validation.required"));
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
     // Validate required fields
     const requiredRadios: (keyof FormData)[] = [
       "childAge",
@@ -86,8 +93,26 @@ export default function Home() {
     );
   }
 
+  function formatPanamaPhone(value: string): string {
+    const digits = value.replace(/\D/g, "").slice(0, 8);
+    if (digits.length > 4) {
+      return `${digits.slice(0, 4)}-${digits.slice(4)}`;
+    }
+    return digits;
+  }
+
+  function handlePhoneChange(value: string) {
+    const formatted = formatPanamaPhone(value);
+    update("respondentPhone", formatted);
+  }
+
   return (
-    <div className="min-h-screen bg-cream-50 px-4 py-8 sm:py-12">
+    <div className="relative min-h-screen bg-cream-50 px-4 py-8 sm:py-12">
+      {/* Language toggle — top right */}
+      <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
+        <LanguageToggle />
+      </div>
+
       <div className="mx-auto max-w-2xl">
         {/* Header */}
         <div className="mb-8 rounded-xl bg-navy-700 p-6 text-center shadow-sm">
@@ -101,9 +126,6 @@ export default function Home() {
           />
           <h1 className="text-2xl font-bold text-cream-100">{t("title")}</h1>
           <p className="mt-1 text-sm text-cream-200">{t("subtitle")}</p>
-          <div className="mt-4 flex justify-center">
-            <LanguageToggle />
-          </div>
         </div>
 
         {/* Form card */}
@@ -118,6 +140,53 @@ export default function Home() {
           )}
 
           <form onSubmit={handleSubmit} className="space-y-8">
+            {/* Respondent info */}
+            <fieldset className="rounded-lg border border-navy-200 p-5">
+              <legend className="px-2 text-base font-semibold text-navy-700">
+                {t("respondent.title")}
+              </legend>
+              <div className="space-y-4">
+                <label className="block">
+                  <span className="text-sm font-medium text-gray-700">{t("respondent.name")}</span>
+                  <input
+                    type="text"
+                    value={form.respondentName}
+                    onChange={(e) => update("respondentName", e.target.value)}
+                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-gray-700 outline-none focus:border-navy-600 focus:ring-1 focus:ring-navy-600"
+                  />
+                </label>
+                <label className="block">
+                  <span className="text-sm font-medium text-gray-700">{t("respondent.email")}</span>
+                  <input
+                    type="email"
+                    value={form.respondentEmail}
+                    onChange={(e) => update("respondentEmail", e.target.value)}
+                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-gray-700 outline-none focus:border-navy-600 focus:ring-1 focus:ring-navy-600"
+                  />
+                </label>
+                <label className="block">
+                  <span className="text-sm font-medium text-gray-700">{t("respondent.phone")}</span>
+                  <input
+                    type="tel"
+                    value={form.respondentPhone}
+                    onChange={(e) => handlePhoneChange(e.target.value)}
+                    placeholder={t("respondent.phone.placeholder")}
+                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-gray-700 outline-none focus:border-navy-600 focus:ring-1 focus:ring-navy-600"
+                  />
+                </label>
+                <label className="block">
+                  <span className="text-sm font-medium text-gray-700">{t("respondent.childAge")}</span>
+                  <input
+                    type="text"
+                    value={form.respondentChildAge}
+                    onChange={(e) => update("respondentChildAge", e.target.value)}
+                    placeholder={t("respondent.childAge.placeholder")}
+                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-gray-700 outline-none focus:border-navy-600 focus:ring-1 focus:ring-navy-600"
+                  />
+                </label>
+              </div>
+            </fieldset>
+
             {/* Q1: Child age */}
             <FormSection number={1}>
               <QuestionRadio
@@ -264,35 +333,19 @@ export default function Home() {
               />
             </FormSection>
 
-            {/* Q10: Contact info (conditional on Q9) */}
-            {(form.interest === "yes" || form.interest === "maybe") && (
-              <FormSection number={10}>
-                <fieldset>
-                  <legend className="text-base font-medium text-gray-900">
-                    {t("q10.title")}
-                  </legend>
-                  <div className="mt-3 space-y-4">
-                    <QuestionText
-                      labelKey="q10.name"
-                      value={form.contactName}
-                      onChange={(v) => update("contactName", v)}
-                    />
-                    <QuestionText
-                      labelKey="q10.email"
-                      value={form.contactEmail}
-                      onChange={(v) => update("contactEmail", v)}
-                      type="email"
-                    />
-                    <QuestionText
-                      labelKey="q10.phone"
-                      value={form.contactPhone}
-                      onChange={(v) => update("contactPhone", v)}
-                      type="tel"
-                    />
-                  </div>
-                </fieldset>
-              </FormSection>
-            )}
+            {/* Q10: Comments */}
+            <FormSection number={10}>
+              <label className="block">
+                <span className="text-base font-medium text-gray-900">{t("q10.comments.title")}</span>
+                <textarea
+                  value={form.comments}
+                  onChange={(e) => update("comments", e.target.value)}
+                  placeholder={t("q10.comments.placeholder")}
+                  rows={4}
+                  className="mt-3 block w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-gray-700 outline-none focus:border-navy-600 focus:ring-1 focus:ring-navy-600"
+                />
+              </label>
+            </FormSection>
 
             <SubmitButton status={status} />
           </form>

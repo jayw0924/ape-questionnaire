@@ -6,6 +6,15 @@ const translations: Record<string, Record<string, string>> = {
     "required": "* Obligatorio",
     "lang.toggle": "English",
 
+    // Respondent info
+    "respondent.title": "Información del encuestado",
+    "respondent.name": "Nombre completo *",
+    "respondent.email": "Correo electrónico (opcional)",
+    "respondent.phone": "Teléfono *",
+    "respondent.phone.placeholder": "xxxx-xxxx",
+    "respondent.childAge": "Edad del niño(a) *",
+    "respondent.childAge.placeholder": "Ej: 2 años, 6 meses",
+
     // Q1
     "q1.title": "¿Tiene actualmente hijos entre las siguientes edades?",
     "q1.opt.0-11m": "0–11 meses",
@@ -74,11 +83,9 @@ const translations: Record<string, Record<string, string>> = {
     "q9.opt.maybe": "Tal vez",
     "q9.opt.no": "No",
 
-    // Q10 (conditional)
-    "q10.title": "Datos de contacto",
-    "q10.name": "Nombre",
-    "q10.email": "Correo electrónico",
-    "q10.phone": "Teléfono",
+    // Q10
+    "q10.comments.title": "¿Tiene algún comentario, pregunta o sugerencia adicional?",
+    "q10.comments.placeholder": "Escriba aquí sus comentarios (opcional)...",
 
     // Other
     "other.placeholder": "Especifique...",
@@ -97,6 +104,15 @@ const translations: Record<string, Record<string, string>> = {
     "intro": "Thank you for taking the time to complete this brief survey. Your answers will help us design a program that fits your family's needs.",
     "required": "* Required",
     "lang.toggle": "Español",
+
+    // Respondent info
+    "respondent.title": "Your Information",
+    "respondent.name": "Full name *",
+    "respondent.email": "Email (optional)",
+    "respondent.phone": "Phone *",
+    "respondent.phone.placeholder": "xxxx-xxxx",
+    "respondent.childAge": "Child's age *",
+    "respondent.childAge.placeholder": "E.g. 2 years, 6 months",
 
     // Q1
     "q1.title": "Do you currently have children in the following age ranges?",
@@ -166,11 +182,9 @@ const translations: Record<string, Record<string, string>> = {
     "q9.opt.maybe": "Maybe",
     "q9.opt.no": "No",
 
-    // Q10 (conditional)
-    "q10.title": "Contact Information",
-    "q10.name": "Name",
-    "q10.email": "Email",
-    "q10.phone": "Phone",
+    // Q10
+    "q10.comments.title": "Do you have any comments, questions, or suggestions?",
+    "q10.comments.placeholder": "Write your comments here (optional)...",
 
     // Other
     "other.placeholder": "Please specify...",

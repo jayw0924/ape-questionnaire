@@ -1,4 +1,8 @@
 export type FormData = {
+  respondentName: string;
+  respondentEmail: string;
+  respondentPhone: string;
+  respondentChildAge: string;
   childAge: string;
   timeline: string;
   currentCare: string;
@@ -10,12 +14,14 @@ export type FormData = {
   priceRange: string;
   pricingModel: string;
   interest: string;
-  contactName: string;
-  contactEmail: string;
-  contactPhone: string;
+  comments: string;
 };
 
 export const initialFormData: FormData = {
+  respondentName: "",
+  respondentEmail: "",
+  respondentPhone: "",
+  respondentChildAge: "",
   childAge: "",
   timeline: "",
   currentCare: "",
@@ -27,7 +33,5 @@ export const initialFormData: FormData = {
   priceRange: "",
   pricingModel: "",
   interest: "",
-  contactName: "",
-  contactEmail: "",
-  contactPhone: "",
+  comments: "",
 };
