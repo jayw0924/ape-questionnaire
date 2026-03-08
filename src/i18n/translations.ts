@@ -12,8 +12,7 @@ const translations: Record<string, Record<string, string>> = {
     "respondent.email": "Correo electrónico (opcional)",
     "respondent.phone": "Teléfono *",
     "respondent.phone.placeholder": "xxxx-xxxx",
-    "respondent.childAge": "Edad del niño(a) *",
-    "respondent.childAge.placeholder": "Ej: 2 años, 6 meses",
+
 
     // Q1
     "q1.title": "¿Tiene actualmente hijos entre las siguientes edades?",
@@ -111,8 +110,7 @@ const translations: Record<string, Record<string, string>> = {
     "respondent.email": "Email (optional)",
     "respondent.phone": "Phone *",
     "respondent.phone.placeholder": "xxxx-xxxx",
-    "respondent.childAge": "Child's age *",
-    "respondent.childAge.placeholder": "E.g. 2 years, 6 months",
+
 
     // Q1
     "q1.title": "Do you currently have children in the following age ranges?",

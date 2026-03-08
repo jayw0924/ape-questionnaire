@@ -2,7 +2,7 @@ export type FormData = {
   respondentName: string;
   respondentEmail: string;
   respondentPhone: string;
-  respondentChildAge: string;
+
   childAge: string;
   timeline: string;
   currentCare: string;
@@ -21,7 +21,7 @@ export const initialFormData: FormData = {
   respondentName: "",
   respondentEmail: "",
   respondentPhone: "",
-  respondentChildAge: "",
+
   childAge: "",
   timeline: "",
   currentCare: "",

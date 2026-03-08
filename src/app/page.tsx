@@ -27,7 +27,7 @@ export default function Home() {
     setError("");
 
     // Validate respondent info
-    if (!form.respondentName.trim() || !form.respondentPhone.trim() || !form.respondentChildAge.trim()) {
+    if (!form.respondentName.trim() || !form.respondentPhone.trim()) {
       setError(t("validation.required"));
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
@@ -171,16 +171,6 @@ export default function Home() {
                     value={form.respondentPhone}
                     onChange={(e) => handlePhoneChange(e.target.value)}
                     placeholder={t("respondent.phone.placeholder")}
-                    className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-gray-700 outline-none focus:border-navy-600 focus:ring-1 focus:ring-navy-600"
-                  />
-                </label>
-                <label className="block">
-                  <span className="text-sm font-medium text-gray-700">{t("respondent.childAge")}</span>
-                  <input
-                    type="text"
-                    value={form.respondentChildAge}
-                    onChange={(e) => update("respondentChildAge", e.target.value)}
-                    placeholder={t("respondent.childAge.placeholder")}
                     className="mt-1 block w-full rounded-lg border border-gray-300 px-4 py-2.5 text-sm text-gray-700 outline-none focus:border-navy-600 focus:ring-1 focus:ring-navy-600"
                   />
                 </label>
